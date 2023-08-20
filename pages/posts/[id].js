@@ -31,19 +31,24 @@ export default function PostPage({
       />
       <Header name={globalData.name} />
       <article className="px-6 md:px-0">
+      {posts.map((post) => (
         <header>
-          <h1 className="text-3xl md:text-5xl dark:text-white text-center mb-12">
-            {posts?.title}
-          </h1>
-          {posts?.description && (
-            <p className="text-xl mb-4">{posts?.description}</p>
-          )}
-        </header>
-        <main>
-          <article className="prose dark:prose-dark">
-            {posts.body}
-          </article>
-        </main>
+        <h1 className="text-3xl md:text-5xl dark:text-white text-center mb-12">
+          {post.titulo}
+        </h1>
+        <p className="uppercase mb-3 font-bold opacity-60">
+          {post.created_at}
+        </p>
+        {post.resumo && (
+          <p className="text-xl mb-4">{post.texto}</p>
+        )}
+      </header>
+      ))}
+      <main>
+        <article className="prose dark:prose-dark">
+          {posts.body}
+        </article>
+      </main>
       </article>
       <Footer copyrightText={globalData.footerText} />
       <GradientBackground
